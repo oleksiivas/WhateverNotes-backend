@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../includes/header.ejs") %>
+</head>
+
+<body>
+  <%- include ("../includes/nav.ejs") %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+  </div>
+</div>
+   <div class="jumbotron text-center">
+        <div class="container">
+            <% for(var i=0; i<items.length; i++) {%>
+                <div class="card cCard">
+                    <img src="<%= items[i].imageUrl %>" class="card-img-top cImage">
+                    <div class="card-body">
+                       <h5 class="card-title"><%= items[i].name %></h5>
+                       <h6><%= items[i].price %></h6>
+                       <p class="card-text cText"><%= items[i].description %></p>
+                    </div>
+                 </div>
+                 <% } %>
+        </div>
+    </div>
+
+</body>
+</html>
