@@ -12,4 +12,3 @@ app.use(express.static(path.join(__dirname, 'public')))
         res.render('pages/app', {title: 'Whatever Notes', path: '/'});
     })
     .listen(PORT, () => console.log('listening on ${ PORT }'))
-
