@@ -9,6 +9,19 @@
 <div class="jumbotron text-center">
   <div class="container">
     <h1><%= title %></h1>
+    <form action="/ponder8" method="POST" class="form-inline">
+      <input type="text" name="searchValue" placeholder="Search by Title" class="form-control" style="width:300px">
+      <button type="submit" class="btn btn-primary">Search</button>
+      <% if (searchedValue.length > 0) { %>
+      <a type="button" href="/ponder8" class="btn btn-default">Clear Search Results</a>
+      <h3>Showing search results for: <%= searchedValue %></h3>
+      <% } %>
+    </form>
+  </div>
+  <form class="actions container">
+    <% for(var i = 1; i <= numPages; i++) { %>
+    <a href="?page=<%= i %><%= (searchedValue) ? `&searchValue=${searchedValue}` :  "" %>" class="btn <%= (page==i) ? 'btn-primary' : 'btn-default' %>"><%= i %></a>
+    <% } %>
   </div>
 </div>
    <div class="jumbotron text-center">
