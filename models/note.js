@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
     date: {
-      type: Date,
-      required: true
+        type: Date,
+        required: true
     },
 
     subject: {
@@ -14,13 +14,13 @@ const noteSchema = new Schema({
 
     },
 
-    noteId:{
-//I don't quite sure what to put here. 
-    }, 
-content:{
-type: String,
-required: true
-}
+    noteId: {
+        //I don't quite sure what to put here. 
+    },
+    content: {
+        type: String,
+        required: true
+    }
 
 });
 
