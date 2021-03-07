@@ -24,15 +24,13 @@ const userSchema = new Schema({
         required: true
     },
 
-    note: {
-        notes: [{
-            noteId: {
-                type: Schema.Types.noteId, // I am not sure if I did this right. 
-                ref: 'Note',
-                require: true
-            }
-        }]
-    }
+    notes: [{
+        noteId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Note',
+            require: true
+        }
+    }]
 
 });
 
