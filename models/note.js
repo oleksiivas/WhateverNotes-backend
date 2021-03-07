@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
-    date: {
+    dateCreated: {
         type: Date,
         required: true
     },
@@ -14,14 +14,13 @@ const noteSchema = new Schema({
 
     },
 
-    noteId: {
-        //I don't quite sure what to put here. 
-    },
+    // noteId: {
+    //     //I don't quite sure what to put here. 
+    // },
     content: {
         type: String,
         required: true
     }
-
 });
 
 module.exports = mongoose.model('Note', noteSchema);
