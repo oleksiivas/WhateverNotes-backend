@@ -1,22 +1,26 @@
-const mongoConnect = require('../util/database').mongoConnect;
-const getDB = require('../util/database').getDB;
+const mongoose = require('mongoose');
 
-class Note {
-    constructor(title, author, size) {
-        this.title = title;
-        this.author = author;
-        this.size = size;
+const Schema = mongoose.Schema;
+
+const noteSchema = new Schema({
+    dateCreated: {
+        type: Date,
+        required: true
+    },
+
+    subject: {
+        type: String,
+        require: true
+
+    },
+
+    // noteId: {
+    //     //I don't quite sure what to put here. 
+    // },
+    content: {
+        type: String,
+        required: true
     }
+});
 
-    save() {
-        const db = getDB();
-        db.collection('notes').insertOne(this)
-            .then(result => {
-                console.log(result);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-}
+module.exports = mongoose.model('Note', noteSchema);

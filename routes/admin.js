@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const adminController = require('../controllers/adminController');
+const adminController = require('../controllers/admin');
 const router = require('./ponder08');
 
 // /admin/notes => GET
