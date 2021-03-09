@@ -3,12 +3,12 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const PORT = process.env.PORT || 5500
 
 const app = express();
 
-const secrets = require('./secrets');
 const ponder8Routes = require('./routes/ponder08');
 const adminRoutes = require('./routes/admin');
 
@@ -24,10 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')))
         });
     });
 
-mongoose.connect(secrets.databaseUrl)
+mongoose.connect(process.env.DATABASE_URL)
     .then(result => {
         app.listen(PORT);
-        console.log('connected to the database!!! :D');
+        console.log(`\nconnected to the database!!! :D
+            listening on port ${PORT}.
+            URL: localhost:${PORT}`);
     })
     .catch(err => {
         console.log(err);
