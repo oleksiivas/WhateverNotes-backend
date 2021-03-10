@@ -10,11 +10,14 @@ const PORT = process.env.PORT || 5500
 const app = express();
 
 const ponder8Routes = require('./routes/ponder08');
-const adminRoutes = require('./routes/admin');
+// const adminRoutes = require('./routes/admin');
+const noteRoutes = require('./routes/note');
 
+app.use(bodyParser.json({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')))
     .use('/ponder8', ponder8Routes)
-    .use('/admin', adminRoutes)
+    // .use('/admin', adminRoutes)
+    .use('/note', noteRoutes)
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .get('/', (req, res, next) => {
