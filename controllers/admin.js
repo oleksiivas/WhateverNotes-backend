@@ -17,6 +17,7 @@ exports.postAddNote = (req, res, next) => {
     note.save()
         .then(result => {
             console.log('Created Note');
+            res.status(201).send({response: "Created a note"})
         })
         .catch(err => {
             console.log(err);
