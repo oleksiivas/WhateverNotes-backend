@@ -17,9 +17,8 @@ exports.getNote = (req, res, next) => {
             });
         })
         .catch(err => {
-            // how to ddifrenciate between 404, server errors and more?
             res.status(500).send({
-                response: "Couldn't get the note"
+                response: "There was a problem while getting the note"
             });
         })
 };
@@ -27,7 +26,7 @@ exports.getNote = (req, res, next) => {
 exports.postCreateNote = (req, res, next) => {
     const dateCreated = Date.now();
     const subject = req.body.subject || "default subject"; // Ask Andrew how to deal with undefined values.
-    const content = req.body.content || "default content";
+    const content = req.body.content || "default content"; // look into express-validator
     const note = new Note({
         dateCreated: dateCreated,
         subject: subject,
@@ -84,7 +83,7 @@ exports.putUpdateNote = (req, res, next) => {
         });
 };
 
-exports.deleteDeleteNote = (req, res, next) => {
+exports.deleteNote = (req, res, next) => {
     const noteId = req.body.noteId;
 
     Note.findByIdAndRemove(noteId) // WHat's the difference between delete and remove

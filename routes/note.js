@@ -18,6 +18,6 @@ router.post('/create-note', noteController.postCreateNote);
 router.put('/update-note', noteController.putUpdateNote);
 
 // /note/delete-note => DELETE
-router.delete('/delete-note', noteController.deleteDeleteNote);
+router.delete('/delete-note', noteController.deleteNote);
 
 module.exports = router;
