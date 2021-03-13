@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 exports.postLogin = (req, res, next) => {
@@ -36,7 +36,7 @@ exports.postSignup = (req, res, next) => {
     const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
-    User.findOne(email)
+    User.findOne({email})
         .then(user => {
             if (user){
                 const err = new Error('Username is taken')
@@ -49,6 +49,8 @@ exports.postSignup = (req, res, next) => {
             .hash(password, 12)
             .then(hashed => {
                 const user = new User({
+                    firstName,
+                    lastName,
                     email,
                     password: hashed
                 })
