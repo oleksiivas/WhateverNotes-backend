@@ -1,1 +1,0 @@
-module.exports  = 'mongodb+srv://admin:HBvU96qz3NN4Zz0v@cluster0.iywzq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
