@@ -30,15 +30,16 @@
             
             <br/<br/><br/<br/>
 
-            <table style="margin-left: auto; margin-right: auto;">
+            <table style="margin-left: auto; margin-right: auto; text-align: left;">
                 <tr>
                   <th>Name</th>
                   <th>Super Power</th>
                 </tr>
                 <% for (const avenger of avengers) {%>
                     <tr>
-                        <td><%=avenger.name %></td>
-                        <td><%=avenger.power %></td>
+                        <td><h4><%=avenger.name %></h4></td>
+                        <td></td>
+                        <td><h4><%=avenger.power %></h4></td>
                     </tr>
                 <% } %>
               </table>

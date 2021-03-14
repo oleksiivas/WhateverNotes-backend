@@ -1,8 +1,6 @@
 path = require('path')
 fs = require('fs')
 
-
-
 exports.getPage = (req, res, next) => {
     let avengers = getAvengersAsJson();
     
@@ -14,16 +12,18 @@ exports.getPage = (req, res, next) => {
 };
 
 exports.postAddAvenger = (req, res, next) => {
-    const avengerName = req.body.name;
-    const avengerPower = req.body.power;
+    avenger = {
+        name: req.body.name,
+        power: req.body.power
+    }
 
     let avengers = getAvengersAsJson();
 
-    if (!avengers.includes(avengerName)) {
-        avengers.push({name: avengerName, power: avengerPower});
+    if (avengers.filter(ave => ave.name === avenger.name).length === 0) {
+        avengers.push(avenger);
         fs.writeFileSync(getAvengersPath(), JSON.stringify(avengers));
     }
-    
+
     res.render('../views/pages/page10.ejs', {
         avengers: avengers,
         title: 'Display Avengers',
