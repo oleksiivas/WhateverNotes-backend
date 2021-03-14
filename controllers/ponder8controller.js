@@ -6,7 +6,7 @@ const url = "https://byui-cse.github.io/cse341-course/lesson03/items.json";
 const items_per_page = 10;
 
 const renderPages = (req, res, json) => {
-    let searchedValue =  req.query.searchValue || ''
+    let searchedValue = req.query.searchValue || ''
     let page = req.query.page || 1
 
     const indexStart = (page - 1) * items_per_page
@@ -35,7 +35,7 @@ const renderPages = (req, res, json) => {
 
 
 exports.getJson = (req, res, next) => {
-    
+
     https
         .get(url, function (response) {
             var body = ''
