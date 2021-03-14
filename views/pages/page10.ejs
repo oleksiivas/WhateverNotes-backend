@@ -1,18 +1,61 @@
 <!DOCTYPE html>
+
 <html>
+
+
 
 <head>
     <%- include ("../includes/header.ejs") %>
 </head>
 
+
+
 <body>
     <%- include ("../includes/nav.ejs") %>
-    <div class="jumbotron text-center">
-        <div class="container">
-            <h1><%= title %></h1>
+
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1>
+                    <%= title %>
+                </h1>
+            </div>
+            
+            <br/<br/><br/<br/>
+            
+            <form action="/prove10/add-avenger" method="POST">
+                Name<input type="text" name="name">
+                Super Power<input type="text" name="power">
+                <button type="submit">Add Avenger</button>
+            </form>
+            
+            <br/<br/><br/<br/>
+
+            <table style="margin-left: auto; margin-right: auto;">
+                <tr>
+                  <th>Name</th>
+                  <th>Super Power</th>
+                </tr>
+                <% for (const avenger of avengers) {%>
+                    <tr>
+                        <td><%=avenger.name %></td>
+                        <td><%=avenger.power %></td>
+                    </tr>
+                <% } %>
+              </table>
+
+
+
+
+
+
+
+
         </div>
-    </div>
+
+
 
 </body>
+
+
 
 </html>

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-// const controller = require('../controllers/ponder8controller');
 
-// router.get('/', controller.getJson)
+const controller = require('../controllers/prove10Controller');
 
-// router.post('/', controller.getIndex)
+router.get('/', controller.getPage)
+
+router.post('/add-avenger', controller.postAddAvenger)
 
 module.exports = router;
