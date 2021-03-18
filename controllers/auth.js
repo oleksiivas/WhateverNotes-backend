@@ -6,24 +6,21 @@ const SECRET = 'super secret key'
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    User.findOne(email)
+    User.findOne({email})
         .then(user => {
             if (!user) {
                 const err = new Error('Invalid username/password')
                 return res.status(401).send({
-                    error: err,
-                    message: "wrong username or password"
-                })
+                    error: err.message,
+                });
             }
             bcrypt.compare(password, user.password)
                 .then(match => {
                     if (!match) {
                         const err = new Error('Invalid username/password')
                         return res.status(401).send({
-                            error: err,
-                            message: "Wrong username/password"
-                        })
-
+                            error: err.message
+                        });
                     }
 
                     const token = jwt.sign({
@@ -37,13 +34,12 @@ exports.postLogin = (req, res, next) => {
                     })
                 })
         })
-        .catch(err =>{
-          console.log(err)
-          res.status(500).send({error : err}) 
-        })
+        .catch(err => {
+            res.status(500).send({
+                error: err.message
+            });
+        });
 }
-
-
 
 exports.postSignup = (req, res, next) => {
     const firstName = req.body.firstName;
@@ -55,11 +51,10 @@ exports.postSignup = (req, res, next) => {
         })
         .then(user => {
             if (user) {
-                const err = new Error('Username is taken')
+                const err = new Error('Username is taken');
                 return res.status(409).send({
-                    error: err
-
-                })
+                    error: err.message
+                });
             }
             return bcrypt
                 .hash(password, 12)
@@ -75,13 +70,12 @@ exports.postSignup = (req, res, next) => {
                 .then(user => {
                     res.status(201).send({
                         message: "A new user was created"
-                    })
+                    });
                 })
-
         })
-
-
         .catch(err => {
-            console.log(err);
+            res.status(500).send({
+                err: err.message
+            });
         });
 };
