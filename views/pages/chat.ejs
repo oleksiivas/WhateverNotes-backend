@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../includes/header.ejs") %>
+</head>
+
+<body>
+  <%- include ("../includes/nav.ejs") %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+  </div>
+
+  <div id=chat>
+    <% for (const reply of chatHistory) { %>
+        <p>
+            <%= reply.name%>: <%= reply.content %>
+        </p>
+        <% } %>
+  </div>
+  <div>
+      Name<input type="text" id="replierName">
+      Content<input type="text" id="replierContent">
+      <button id="addReplyButton">Add Reply</button>
+  </div>
+</div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
