@@ -13,6 +13,7 @@ const ponder8Routes = require('./routes/ponder08');
 const prove10Routes = require('./routes/prove10');
 // const adminRoutes = require('./routes/admin');
 const noteRoutes = require('./routes/note');
+const groupsRoutes = require('./routes/groupRouter');
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')))
     .use('/ponder8', ponder8Routes)
     .use('/prove10', prove10Routes)
+    .use('/groups', groupsRoutes)
     // .use('/admin', adminRoutes)
     .use('/note', noteRoutes)
     .set('views', path.join(__dirname, 'views'))
