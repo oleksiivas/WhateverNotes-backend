@@ -6,15 +6,20 @@ replierContent = document.getElementById("replierContent");
 chat = document.getElementById("chat");
 
 
-addReplyButton.onclick = () => {    
+addReplyButton.onclick = () => {
     // alert(`Name: ${replierName.value} Content: ${replierContent.value}`);
     socket.emit('addReply', {
         name: replierName.value,
-        content = replierContent.value
+        content: replierContent.value,
     });
 }
 
+
 socket.on('updatedChat', chatHistory => {
-    alert('recieved update');
-    chat.innerHTML += "<p> " + chatHistory[chatHistory.length - 1].name + chatHistory[chatHistory.length - 1].content + "</p>";
+    if (chatHistory[chatHistory.length - 1].name !== "" && chatHistory[chatHistory.length - 1].content !== "") {
+        alert('recieved update');
+        chat.innerHTML += "<p><b>" + chatHistory[chatHistory.length - 1].name + "</b> says: <i>\"" + chatHistory[chatHistory.length - 1].content + "\"</i></p>";
+    } else {
+        alert('Name and Content fields are required');
+    }
 })
