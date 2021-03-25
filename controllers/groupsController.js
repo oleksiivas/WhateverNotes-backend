@@ -2,18 +2,7 @@ const Group = require('../models/group');
 
 let groups = [];
 
-exports.getAllGroups = (req, res, next) => {
-
-    if (groups.length == 0) {
-        res.status(404).send({
-            response: "Groups weren't found"
-        });
-    } else {
-        res.status(200).send({
-            response: groups
-        });
-    }
-}
+exports.getAllGroups = () => {}
 
 exports.getGroup = (req, res, next) => {
     const groupId = req.body.groupId;
@@ -31,7 +20,7 @@ exports.getGroup = (req, res, next) => {
         })
         .catch(err => {
             res.status(500).send({
-                response: "There is a problem with this group on the server side."
+                response: "Sorry! We faced a server error while trying to get the group."
             });
         })
 };
