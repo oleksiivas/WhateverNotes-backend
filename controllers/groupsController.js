@@ -1,11 +1,9 @@
 const Group = require('../models/group');
 
-let groups = [];
-
 exports.getAllGroups = () => {}
 
 exports.getGroup = (req, res, next) => {
-    const groupId = req.body.groupId;
+    const groupId = req.params.groupId;
 
     Group.findById(groupId)
         .then(group => {

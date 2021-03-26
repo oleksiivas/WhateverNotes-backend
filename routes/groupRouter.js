@@ -8,7 +8,7 @@ const controller = require('../controllers/groupsController');
 router.get('/groups', controller.getAllGroups);
 
 // Show a specific group
-router.get('/groups:groupId', controller.getGroup);
+router.get('/:groupId', controller.getGroup);
 
 // Create a new group 
 router.post('/create-group', controller.postGroup);

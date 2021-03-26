@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const note = require('./note').noteSchema;
 
 const Schema = mongoose.Schema;
 
@@ -10,7 +11,6 @@ const groupSchema = new Schema({
       ref: 'Note',
       required: true
     }
-
   }],
 
   users: [{
