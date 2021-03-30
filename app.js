@@ -9,8 +9,7 @@ const PORT = process.env.PORT || 5500
 
 const app = express();
 
-const ponder8Routes = require('./routes/ponder08');
-const groupRoutes = require('./routes/groupRouter');
+const groupRoutes = require('./routes/group');
 const authRoutes = require('./routes/auth');
 const noteRoutes = require('./routes/note');
 const chatRoutes = require('./routes/chat');
@@ -22,7 +21,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(express.static(path.join(__dirname, 'public')))
-    .use('/ponder8', ponder8Routes)
     .use('/groups', groupRoutes)
     .use('/auth', authRoutes)
     .use('/note', noteRoutes)
