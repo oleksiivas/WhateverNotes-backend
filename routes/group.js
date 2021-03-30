@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/groupsController');
+const controller = require('../controllers/group');
 
 
 // Show groups

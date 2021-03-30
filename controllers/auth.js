@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-const SECRET = 'super secret key'
 
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
@@ -25,7 +24,7 @@ exports.postLogin = (req, res, next) => {
 
                     const token = jwt.sign({
                         _id: user._id
-                    }, SECRET, {
+                    }, process.env.SECRET, {
                         expiresIn: '1h'
                     })
                     return res.status(200).send({
