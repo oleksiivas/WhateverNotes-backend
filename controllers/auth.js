@@ -1,11 +1,18 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-const SECRET = 'super secret key'
+const SECRET = 'super super secret key'
+const { validationResult } = require('express-validator/check');
 
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+      return res.status(400).send({
+        errorMessage: errors.array()[0].msg
+       
+      })}
     User.findOne({email})
         .then(user => {
             if (!user) {
@@ -22,9 +29,9 @@ exports.postLogin = (req, res, next) => {
                             error: err.message
                         });
                     }
-
+                   
                     const token = jwt.sign({
-                        _id: user._id
+                        _id: user._id, _role: user.role
                     }, SECRET, {
                         expiresIn: '1h'
                     })
@@ -46,6 +53,13 @@ exports.postSignup = (req, res, next) => {
     const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+        console.log(errors.array())
+      return res.status(400).send({
+        errorMessage: errors.array()[0].msg
+       
+      })}
     User.findOne({
             email
         })
