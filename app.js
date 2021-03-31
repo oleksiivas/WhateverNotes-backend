@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config()
 
 const PORT = process.env.PORT || 5500
@@ -13,6 +14,8 @@ const groupRoutes = require('./routes/group');
 const authRoutes = require('./routes/auth');
 const noteRoutes = require('./routes/note');
 const chatRoutes = require('./routes/chat');
+
+app.use(cors())
 
 app.use(bodyParser.json({
     extended: false
