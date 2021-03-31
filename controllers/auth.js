@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-const SECRET = 'super super secret key'
+
+
 const { validationResult } = require('express-validator/check');
 
 exports.postLogin = (req, res, next) => {
@@ -31,8 +32,9 @@ exports.postLogin = (req, res, next) => {
                     }
                    
                     const token = jwt.sign({
-                        _id: user._id, _role: user.role
-                    }, SECRET, {
+
+                        _id: user._id
+                    }, process.env.SECRET, {
                         expiresIn: '1h'
                     })
                     return res.status(200).send({

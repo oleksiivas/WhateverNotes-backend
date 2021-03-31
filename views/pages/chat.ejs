@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include ("../includes/header.ejs") %>
+</head>
+
+<body>
+  <%- include ("../includes/nav.ejs") %>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1><%= title %></h1>
+    </div>
+
+    <table style="width:50%; margin-left: auto; margin-right: auto;">
+      <tr>
+        <th style="vertical-align: top; text-align: left;">
+          <div>
+            <p>Add a new message: </p>
+            Name: <input type="text" id="replierName"><br><br>
+            Content:<br>
+            <textarea id="replierContent"> </textarea><br>
+            <button id="addReplyButton">Add Reply</button>
+          </div>
+  </div>
+  </th>
+  <th>
+    <div id=chat>
+      <p><b>Chat messages: </b></p>
+      <% for (const reply of chatHistory) { %>
+      <% if (reply.name != "" && reply.content != "") { %>
+      <p><b>
+          <%= reply.name%></b> says: <i>"<%= reply.content %>"
+        </i></p>
+      <% } %>
+      <% } %>
+    </div>
+  </th>
+  </tr>
+  </table>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="chat.js"></script>
+</body>
+
+</html>
