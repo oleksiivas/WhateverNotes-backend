@@ -14,7 +14,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-  
+
 
     email: {
         type: String,
@@ -27,11 +27,9 @@ const userSchema = new Schema({
     },
 
     notes: [{
-        noteId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Note',
-            require: true
-        }
+        type: Schema.Types.ObjectId,
+        ref: 'Note',
+        require: true
     }]
 
 });
