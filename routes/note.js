@@ -1,5 +1,4 @@
 const path = require('path');
-const express = require('express');
 
 const router = express.Router();
 
@@ -8,7 +7,7 @@ const noteController = require('../controllers/note');
 const isAuth = require('../middleware/is_auth');
 
 // /note/notes => GET
-router.get('/notes',isAuth, noteController.getNotes);
+router.get('/notes', isAuth, noteController.getNotes);
 
 // /note/note => GET
 router.get('/:noteId', isAuth, noteController.getNote);

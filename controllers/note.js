@@ -24,14 +24,12 @@ exports.getNote = (req, res, next) => {
 };
 
 exports.postCreateNote = (req, res, next) => {
+    if (req.body.subject === "" || req.body.content === "") {
+        res.status(400).send({response: "Subject and content cannot be empty"})
+    }
     const dateCreated = Date.now();
     const subject = req.body.subject;
     const content = req.body.content;
-    if (!subject || ! content) {
-        res.status(400).send({
-            response: "Missing subject or content"
-        });
-    }
     const note = new Note({
         dateCreated: dateCreated,
         subject: subject,
@@ -53,6 +51,9 @@ exports.postCreateNote = (req, res, next) => {
 };
 
 exports.putUpdateNote = (req, res, next) => {
+    if (req.body.subject === "" || req.body.content === "") {
+        res.status(400).send({response: "Subject and content cannot be empty"})
+    }
     const noteId = req.body.noteId;
     const updatedSubject = req.body.subject;
     const updatedContent = req.body.content;
