@@ -4,7 +4,6 @@ const router = express.Router();
 const controller = require('../controllers/group');
 const isAuth = require('../middleware/is_auth');
 
-
 // Show groups
 router.get('/groups', isAuth, controller.getAllGroups);
 
