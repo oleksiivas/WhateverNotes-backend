@@ -4,8 +4,6 @@ const User = require ('../models/user');
 const router = express.Router();
 const authControllers = require('../controllers/auth');
 
-
-
 router.post('/login', 
 [
     body('email')
@@ -42,11 +40,7 @@ router.post('/signup',
     .isLength({ min: 5 })
     .isAlphanumeric()
     .trim()
-    
 ],
  authControllers.postSignup);
-
-
-
 
 module.exports = router;
