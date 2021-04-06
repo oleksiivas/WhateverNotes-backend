@@ -25,8 +25,13 @@ exports.getNote = (req, res, next) => {
 
 exports.postCreateNote = (req, res, next) => {
     const dateCreated = Date.now();
-    const subject = req.body.subject || "default subject"; // Ask Andrew how to deal with undefined values.
-    const content = req.body.content || "default content"; // look into express-validator
+    const subject = req.body.subject;
+    const content = req.body.content;
+    if (!subject || ! content) {
+        res.status(400).send({
+            response: "Missing subject or content"
+        });
+    }
     const note = new Note({
         dateCreated: dateCreated,
         subject: subject,
@@ -86,7 +91,7 @@ exports.putUpdateNote = (req, res, next) => {
 exports.deleteNote = (req, res, next) => {
     const noteId = req.body.noteId;
 
-    Note.findByIdAndRemove(noteId) // WHat's the difference between delete and remove
+    Note.findByIdAndRemove(noteId)
         .then(() => {
             res.status(200).send({
                 response: "Deleted the note"

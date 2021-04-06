@@ -59,7 +59,6 @@ mongoose.connect(process.env.DATABASE_URL)
                 io.emit('updatedChat', chatHistory);
             })
         })
-
     })
     .catch(err => {
         console.log(err);
