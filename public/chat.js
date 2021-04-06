@@ -17,9 +17,9 @@ addReplyButton.onclick = () => {
 
 socket.on('updatedChat', chatHistory => {
     if (chatHistory[chatHistory.length - 1].name !== "" && chatHistory[chatHistory.length - 1].content !== "") {
-        alert('recieved update');
+        // alert('recieved update');
         chat.innerHTML += "<p><b>" + chatHistory[chatHistory.length - 1].name + "</b> says: <i>\"" + chatHistory[chatHistory.length - 1].content + "\"</i></p>";
     } else {
-        alert('Name and Content fields are required');
+        // alert('Name and Content fields are required');
     }
 })
